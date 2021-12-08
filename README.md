@@ -1,8 +1,10 @@
 # Requirements
+
 - [docker](https://www.docker.com/products/docker-desktop)
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 # Installation
+
 1. Clone the repository
 ```
 git clone https://github.com/gmllasacas/laravel_backend_case.git
@@ -20,6 +22,7 @@ docker run --rm \
 ```
 
 3. Setup environment
+
 Change directory to the root of the cloned project, then run the command:
 ```
 ./vendor/bin/sail up
@@ -35,18 +38,23 @@ sail artisan test
 ```
 
 5. Run the migration and import the data from the CSV
+
 The CSV is located on database/data/employee_data.csv, give the read permissions to the file if necesary, then run the migration command:
 ```
 sail artisan migrate:fresh --seed
 ```
 
 6. API tests
+
 Import the postman collection and enviroment for the API test.
+
 - The collection: documents/postman/backend_case.postman_collection
 - The enviroment: documentos/postman/backend_case-local.postman_environment.json
+
 Define the correct url-api-v1 for the enviroment and select the enviroment on postman
 
 7. Application tests
+
 Go to http://localhost/ and login with the admin credentials:
 email: admin@email.com
 password: base_app
