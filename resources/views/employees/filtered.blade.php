@@ -35,12 +35,12 @@
         <div class="modal fade" id="modal" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-popout modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Create employee form</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form" method="post" action="" id="form" autocomplete="off">
+                    <form class="form" method="post" action="" id="form" autocomplete="off">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Create employee form</h4>
+                        </div>
+                        <div class="modal-body">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-3">
                                     <div class="form-group">
@@ -199,12 +199,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="submit_form">Create employee</button>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Create employee</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -212,12 +212,12 @@
         <div class="modal fade" id="modal-edit" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-popout modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Edit employee form</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form" method="post" action="" id="form-edit" autocomplete="off">
+                    <form class="form" method="post" action="" id="form-edit" autocomplete="off">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Edit employee form</h4>
+                        </div>
+                        <div class="modal-body">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-3">
                                     <div class="form-group">
@@ -376,12 +376,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="submit_form-edit">Edit employee</button>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Edit employee</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -517,7 +517,8 @@
                 });
             });
 
-            jQuery('body').on('click', "#submit_form", function() {
+            $("#form").submit(function(e) {
+                e.preventDefault();
                 jQuery.ajax({
                     url: "{{ URL::to('api/employees') }}",
                     type: 'post',
@@ -543,7 +544,8 @@
                 });
             });
 
-            jQuery('body').on('click', "#submit_form-edit", function() {
+            $("#form-edit").submit(function(e) {
+                e.preventDefault();
                 jQuery.ajax({
                     url: "{{ URL::to('api/employees') }}/"+jQuery('#form-edit [name=id]').val(),
                     type: 'patch',

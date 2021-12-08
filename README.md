@@ -61,7 +61,8 @@ password: base_app
 - A basic menu for navigation
 
 9. TODO
-- The standar role is defined but can see al the views
+- Add frontend validations to the forms
+- The standar role is defined, it can see al the views but cannot execute all of the actions
 - Add policies and restriccions to the blade views of the basic application
 - The API is functional but it also can benefit from policies
 
