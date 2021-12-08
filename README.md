@@ -29,22 +29,22 @@ For future commands, add the bash alias with:
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 ```
 
-4. Run the migration and import the data from the CSV
+4. Run the feature tests
+```
+sail artisan test
+```
+
+5. Run the migration and import the data from the CSV
 The CSV is located on database/data/employee_data.csv, give the read permissions to the file if necesary, then run the migration command:
 ```
 sail artisan migrate:fresh --seed
-```
-
-5. Run the feature tests
-```
-sail artisan test
 ```
 
 6. API tests
 Import the postman collection and enviroment for the API test.
 - The collection: documents/postman/backend_case.postman_collection
 - The enviroment: documentos/postman/backend_case-local.postman_environment.json
-Define the correct url-api-v1 for the enviroment.
+Define the correct url-api-v1 for the enviroment and select the enviroment on postman
 
 7. Application tests
 Go to http://localhost/ and login with the admin credentials:

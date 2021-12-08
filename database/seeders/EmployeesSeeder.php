@@ -27,7 +27,7 @@ class EmployeesSeeder extends Seeder
         $data = $this->importCSV($file);
         if(count($data) > 0){
             try {
-                DB::beginTransaction();
+                DB::connection()->getPdo()->beginTransaction();
                 Employee::truncate();
                 $index = 0;
                 foreach ($data as $key => $row) {
@@ -48,10 +48,10 @@ class EmployeesSeeder extends Seeder
                     $index++;
                 }
 
-                DB::commit();
+                DB::connection()->getPdo()->commit();
             
             } catch (\Throwable $e) {
-                DB::rollBack();
+                DB::connection()->getPdo()->rollBack();
                 $output->writeln("<error>Employee seeder failed! Verify the data of the file and run the seeder manually.</error>");
                 $output->writeln($e->getMessage());
             }
