@@ -26,9 +26,9 @@ class EmployeesSeeder extends Seeder
         
         $data = $this->importCSV($file);
         if(count($data) > 0){
-            DB::beginTransaction();
-            Employee::truncate();
             try {
+                DB::beginTransaction();
+                Employee::truncate();
                 $index = 0;
                 foreach ($data as $key => $row) {
 
