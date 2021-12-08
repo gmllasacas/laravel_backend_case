@@ -47,8 +47,6 @@ class EmployeeRepository
     public function create(array $data): void
     {
         try {
-            DB::beginTransaction();
-
             $this->model->id = $data['emp_id'];
             $this->model->name_prefix = $data['name_prefix'];
             $this->model->first_name = $data['first_name'];
@@ -69,11 +67,7 @@ class EmployeeRepository
             $this->model->zip = $data['zip'];
             $this->model->save();
             $this->model->refresh();
-
-            DB::commit();
         } catch (\Throwable $e) {
-            DB::rollback();
-
             $message = 'Failed to register employee, ' .
                 'error: ' . $e->getMessage();
 
@@ -93,8 +87,6 @@ class EmployeeRepository
     public function update(array $data): void
     {
         try {
-            DB::beginTransaction();
-
             $this->model->name_prefix = $data['name_prefix'] ?? $this->model->name_prefix;
             $this->model->first_name = $data['first_name'] ?? $this->model->first_name;
             $this->model->middle_initial = $data['middle_initial'] ?? $this->model->middle_initial;
@@ -114,11 +106,7 @@ class EmployeeRepository
             $this->model->zip = $data['zip'] ?? $this->model->zip;
             $this->model->save();
             $this->model->refresh();
-
-            DB::commit();
         } catch (\Throwable $e) {
-            DB::rollback();
-
             $message = 'Failed to update employee, ' .
                 'error: ' . $e->getMessage();
 
