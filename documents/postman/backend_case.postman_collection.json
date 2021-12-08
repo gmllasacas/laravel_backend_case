@@ -1,0 +1,533 @@
+{
+	"info": {
+		"_postman_id": "299bf970-6aa7-440f-a857-d5e46f9bc29c",
+		"name": "backend_case",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "base_app",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url-api-v1}}/auth/login",
+							"host": [
+								"{{url-api-v1}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "new User",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "email@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "base_app",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url-api-v1}}/user/register",
+							"host": [
+								"{{url-api-v1}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url-api-v1}}/user/",
+							"host": [
+								"{{url-api-v1}}"
+							],
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employee",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url-api-v1}}/employees",
+							"host": [
+								"{{url-api-v1}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "emp_id",
+									"value": "111114",
+									"type": "text"
+								},
+								{
+									"key": "name_prefix",
+									"value": "Dr.",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "New Name",
+									"type": "text"
+								},
+								{
+									"key": "middle_initial",
+									"value": "Z",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Last Name New",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "M",
+									"type": "text"
+								},
+								{
+									"key": "e_mail",
+									"value": "new@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "fathers_name",
+									"value": "New Fathers name",
+									"type": "text"
+								},
+								{
+									"key": "mothers_name",
+									"value": "New Mothers name",
+									"type": "text"
+								},
+								{
+									"key": "mothers_maiden_name",
+									"value": "New Maiden name",
+									"type": "text"
+								},
+								{
+									"key": "date_of_birth",
+									"value": "1/1/1999",
+									"type": "text"
+								},
+								{
+									"key": "date_of_joining",
+									"value": "1/1/2019",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "66666",
+									"type": "text"
+								},
+								{
+									"key": "ssn",
+									"value": "111-11-1111",
+									"type": "text"
+								},
+								{
+									"key": "phone_no",
+									"value": "111-111-1111",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "New City",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "AA",
+									"type": "text"
+								},
+								{
+									"key": "zip",
+									"value": "11111",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url-api-v1}}/employees",
+							"host": [
+								"{{url-api-v1}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url-api-v1}}/employees/:employee",
+							"host": [
+								"{{url-api-v1}}"
+							],
+							"path": [
+								"employees",
+								":employee"
+							],
+							"variable": [
+								{
+									"key": "employee",
+									"value": "158666"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name_prefix",
+									"value": "Mr.",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "Name edited",
+									"type": "text"
+								},
+								{
+									"key": "middle_initial",
+									"value": "Z",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Last Name edited",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "F",
+									"type": "text"
+								},
+								{
+									"key": "e_mail",
+									"value": "edited@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "fathers_name",
+									"value": "Fathers name edited",
+									"type": "text"
+								},
+								{
+									"key": "mothers_name",
+									"value": "Mothers name edited",
+									"type": "text"
+								},
+								{
+									"key": "mothers_maiden_name",
+									"value": "Maiden name edited",
+									"type": "text"
+								},
+								{
+									"key": "date_of_birth",
+									"value": "1/1/2001",
+									"type": "text"
+								},
+								{
+									"key": "date_of_joining",
+									"value": "1/1/2019",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "55555",
+									"type": "text"
+								},
+								{
+									"key": "ssn",
+									"value": "999-99-9999",
+									"type": "text"
+								},
+								{
+									"key": "phone_no",
+									"value": "999-999-9999",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "City edited",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "ZZ",
+									"type": "text"
+								},
+								{
+									"key": "zip",
+									"value": "99999",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url-api-v1}}/employees/:employee",
+							"host": [
+								"{{url-api-v1}}"
+							],
+							"path": [
+								"employees",
+								":employee"
+							],
+							"variable": [
+								{
+									"key": "employee",
+									"value": "158666"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url-api-v1}}/employees/:employee",
+							"host": [
+								"{{url-api-v1}}"
+							],
+							"path": [
+								"employees",
+								":employee"
+							],
+							"variable": [
+								{
+									"key": "employee",
+									"value": "158666"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
