@@ -39,7 +39,7 @@ sail artisan test
 
 5. Run the migration and import the data from the CSV
 
-The CSV is located on database/data/employee_data.csv, give the read permissions to the file if necesary, then run the migration command:
+The CSV is located on database/data/employee_data.csv, give read permissions to the file if necesary, then run the migration command:
 ```
 sail artisan migrate:fresh --seed
 ```
@@ -51,13 +51,14 @@ Import the postman collection and enviroment for the API test.
 - The collection: documents/postman/backend_case.postman_collection
 - The enviroment: documentos/postman/backend_case-local.postman_environment.json
 
-Define the correct url-api-v1 for the enviroment and select the enviroment on postman
+Define the correct url-api-v1 for the enviroment and select the enviroment on postman.
 
 7. Application tests
 
 Go to http://localhost/ and login with the admin credentials:
-email: admin@email.com
-password: base_app
+
+- email: admin@email.com
+- password: base_app
 
 8. Done
 
