@@ -1,3 +1,13 @@
+# Core Requirements
+
+1. Create a database migration to import the provided employee_data.csv file
+2. Create a database seeder which reads and parses the CSV file to populate the database
+3. Define some form of user management with roles: standard & admins
+4. Create a page that displays all of the employee data
+5. Create a page that lists the employees in a table
+6. Create an authorized view (or set of views) for admins only to perform CRUD operations to manipulate the employee data in the database.
+7. Create a menu system to help users navigate around the application
+
 # Requirements
 
 - [docker](https://www.docker.com/products/docker-desktop)
@@ -39,19 +49,19 @@ sail artisan test
 
 5. Run the migration and import the data from the CSV
 
-The CSV is located on database/data/employee_data.csv, give read permissions to the file if necesary, then run the migration command:
+The CSV is located on database/data/employee_data.csv, give read permissions to the file if necessary, then run the migration command:
 ```
 sail artisan migrate:fresh --seed
 ```
 
 6. API tests
 
-Import the postman collection and enviroment for the API test.
+Import the postman collection and environment for the API test.
 
 - The collection: documents/postman/backend_case.postman_collection
-- The enviroment: documentos/postman/backend_case-local.postman_environment.json
+- The environment: documents/postman/backend_case-local.postman_environment.json
 
-Define the correct url-api-v1 for the enviroment and select the enviroment on postman.
+Define the correct url-api-v1 for the environment and select the environment on postman.
 
 7. Application tests
 
@@ -71,7 +81,6 @@ Go to http://localhost/ and login with the admin credentials:
 
 9. TODO
 - Add frontend validations to the forms
-- The standar role is defined, it can see al the views but cannot execute all of the actions
-- Add policies and restriccions to the blade views of the basic application
+- The standard role is defined, it can see all the views but cannot execute all of the actions
+- Add policies and restrictions to the blade views of the basic application
 - The API is functional but it also can benefit from policies
-
